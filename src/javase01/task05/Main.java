@@ -13,5 +13,6 @@ public class Main {
                 if (j==size-1) System.out.print("\n");
             }
         }
+        System.out.println("Lexus pipka");
     }
 }
