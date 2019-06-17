@@ -8,7 +8,7 @@ public class Notepad {
     public void addRecord(){
 
     }
-
+    /** Метод удаления записи из блокнота*/
     public void deleteRecord(){
 
     }
