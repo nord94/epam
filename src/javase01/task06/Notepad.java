@@ -9,6 +9,10 @@ public class Notepad {
 
     }
 
+    public void deleteRecord(){
+
+    }
+
     public void showInfoMessage(){
         System.out.println("1 - Add record; 2 - Delete record;" +
                 "\n3 - Change record; 4 - Show all records; 0 - Exit");
