@@ -2,6 +2,7 @@ package javase01.task06;
 
 public class Record {
     String record;
-    Record (){
+    Record (String str){
+        record =str;
     }
 }
