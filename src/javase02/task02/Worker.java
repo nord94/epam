@@ -20,11 +20,30 @@ public class Worker {
     }
 
     void collectChancellery(Worker obj){
+        Chancellery[] chancelleries1 = new Chancellery[5];
+        chancelleries1[0]=new BluePen();
+        chancelleries1[1]=new RedPen();
+        chancelleries1[2]=new GreenPen();
+        chancelleries1[3]=new BlackPencil();
+        chancelleries1[4]=new WhitePencil();
+
+        int overStep=0;
         for (int i=0;i<numberOfChancellery;i++){
-            int code=-1;
-            while (code!=-1){
-                System.out.println("Enter: 1 - BluePen, 2 -");
+            if (overStep==0){
+                int code=-1;
+                while (code!=-1){
+                    System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
+                            "4 - BlackPencil, 5 - WhitePencil");
+                    int itemIndex = input.nextInt();
+                    System.out.println("Now enter its quantity:");
+                    for (int j =0;j<input.nextInt();j++){
+                        chancelleries[i+j] = chancelleries1[itemIndex];
+                        overStep=j;
+                    }
+                }
             }
+            else continue;
+
         }
     }
 
