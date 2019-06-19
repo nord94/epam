@@ -1,10 +1,11 @@
 package javase02.task02;
 
-public abstract class Chancellery {
+public class Chancellery {
     int price;
+    int number;
 }
 
-abstract class Pen extends Chancellery{
+class Pen extends Chancellery{
 
 }
 
@@ -26,7 +27,7 @@ class BluePen extends Pen {
     }
 }
 
-abstract class Pencil extends Chancellery{
+class Pencil extends Chancellery{
 
 }
 
