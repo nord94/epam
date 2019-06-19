@@ -21,7 +21,7 @@ public class Worker {
 
     }
 
-    void collectChancellery(Worker obj){
+    void collectChancellery(){
         Chancellery[] chancelleries1 = new Chancellery[5];
         chancelleries1[0]=new BluePen();
         chancelleries1[1]=new RedPen();
@@ -36,9 +36,9 @@ public class Worker {
                         "4 - BlackPencil, 5 - WhitePencil");
                 int itemIndex = input.nextInt();
                 System.out.println("Now enter its quantity:");
-                obj.chancelleries[i].number = input.nextInt();
-                for (int j =0;j<obj.chancelleries[i].number;j++){
-                    obj.chancelleries[i+j] = chancelleries1[itemIndex-1];
+                chancelleries[i].number = input.nextInt();
+                for (int j =0;j<chancelleries[i].number;j++){
+                    chancelleries[i+j] = chancelleries1[itemIndex-1];
                     overStep=j;
                 }
 
@@ -52,6 +52,6 @@ public class Worker {
 
     public static void main(String[] args) {
         Worker worker = new Worker();
-        worker.collectChancellery(worker);
+        worker.collectChancellery();
     }
 }
