@@ -7,14 +7,16 @@ public class Worker {
     int numberOfChancellery;
     Chancellery[] chancelleries = new Chancellery[numberOfChancellery];
     static Scanner input = new Scanner(System.in);
-    private int calculatePriceOfChancellery(Chancellery[] obj){
-        return 100;
+    private int calculatePriceOfChancellery(Worker obj){
+        int summ=0;
+        for (int i =0;i<numberOfChancellery;i++) summ+=obj.chancelleries[i].price;
+        return summ;
     }
 
     Worker(){
         System.out.print("Enter worker name: ");
         name=input.nextLine();
-        System.out.print("\nEnter number of chancellery: ");
+        System.out.print("\nEnter number of all chancellery: ");
         numberOfChancellery=input.nextInt();
 
     }
@@ -30,29 +32,26 @@ public class Worker {
         int overStep=0;
         for (int i=0;i<numberOfChancellery;i++){
             if (overStep==0){
-                int code=-1;
-                while (code!=-1){
-                    System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
-                            "4 - BlackPencil, 5 - WhitePencil");
-                    int itemIndex = input.nextInt();
-                    System.out.println("Now enter its quantity:");
-                    for (int j =0;j<input.nextInt();j++){
-                        chancelleries[i+j] = chancelleries1[itemIndex];
-                        overStep=j;
-                    }
+                System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
+                        "4 - BlackPencil, 5 - WhitePencil");
+                int itemIndex = input.nextInt();
+                System.out.println("Now enter its quantity:");
+                obj.chancelleries[i].number = input.nextInt();
+                for (int j =0;j<obj.chancelleries[i].number;j++){
+                    obj.chancelleries[i+j] = chancelleries1[itemIndex-1];
+                    overStep=j;
                 }
-            }
-            else continue;
 
+            }
+            else {
+                overStep--;
+                continue;
+            }
         }
     }
 
     public static void main(String[] args) {
-
-        int code=-1;
-        while (code!=-1){
-            System.out.print("Enter name of Worker:");
-            Worker worker = new Worker();
-        }
+        Worker worker = new Worker();
+        worker.collectChancellery(worker);
     }
 }
