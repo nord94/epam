@@ -5,7 +5,8 @@ import java.util.Scanner;
 public class Worker {
     String name;
     int numberOfChancellery;
-    Chancellery[] chancelleries = new Chancellery[numberOfChancellery];
+    Chancellery[] chancelleries;
+    //Chancellery[] chancelleries = new Chancellery[numberOfChancellery];
     static Scanner input = new Scanner(System.in);
     private int calculatePriceOfChancellery(Worker obj){
         int summ=0;
@@ -13,12 +14,10 @@ public class Worker {
         return summ;
     }
 
-    Worker(){
-        System.out.print("Enter worker name: ");
-        name=input.nextLine();
-        System.out.print("\nEnter number of all chancellery: ");
-        numberOfChancellery=input.nextInt();
-
+    Worker(String name1, int number){
+        name=name1;
+        numberOfChancellery=number;
+        chancelleries = new Chancellery[number];
     }
 
     void collectChancellery(){
@@ -51,7 +50,8 @@ public class Worker {
     }
 
     public static void main(String[] args) {
-        Worker worker = new Worker();
+        System.out.println("Enter name -> press 'Enter' -> enter number of chancellery");
+        Worker worker = new Worker(input.nextLine(), input.nextInt());
         worker.collectChancellery();
     }
 }
