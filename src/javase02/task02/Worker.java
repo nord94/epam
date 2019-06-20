@@ -6,7 +6,6 @@ public class Worker {
     String name;
     int numberOfChancellery;
     Chancellery[] chancelleries;
-    //Chancellery[] chancelleries = new Chancellery[numberOfChancellery];
     static Scanner input = new Scanner(System.in);
 
     private int calculatePriceOfChancellery(Worker obj) {
@@ -15,21 +14,25 @@ public class Worker {
         return summ;
     }
 
-    Worker(String name1, int number) {
-        name = name1;
-        numberOfChancellery = number;
+    Worker(String name, int number) {
+        this.name = name;
         chancelleries = new Chancellery[number];
     }
 
     void collectChancellery() {
-        Chancellery[] chancelleries1 = new Chancellery[5];
-        chancelleries1[0] = new BluePen();
-        chancelleries1[1] = new RedPen();
-        chancelleries1[2] = new GreenPen();
-        chancelleries1[3] = new BlackPencil();
-        chancelleries1[4] = new WhitePencil();
+        Chancellery[] allPossibleChancellery = new Chancellery[5];
+        allPossibleChancellery[0] = new BluePen();
+        allPossibleChancellery[1] = new RedPen();
+        allPossibleChancellery[2] = new GreenPen();
+        allPossibleChancellery[3] = new BlackPencil();
+        allPossibleChancellery[4] = new WhitePencil();
 
         int overStep = 0;
+        /*
+        In this cycle i'm filling 'chancelleries' for Worker with elements from
+        all allPossibleChancellery.
+        I used 'overStep'-variable to skip elements in Worker's chancellery that are  filled with similar object.
+         */
         for (int i = 0; i < numberOfChancellery; i++) {
             if (overStep == 0) {
                 System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
@@ -38,7 +41,7 @@ public class Worker {
                 System.out.println("Now enter its quantity:");
                 chancelleries[i].number = input.nextInt();
                 for (int j = 0; j < chancelleries[i].number; j++) {
-                    chancelleries[i + j] = chancelleries1[itemIndex - 1];
+                    chancelleries[i + j] = allPossibleChancellery[itemIndex - 1];
                     overStep = j;
                 }
 
