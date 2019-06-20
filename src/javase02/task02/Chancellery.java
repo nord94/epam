@@ -3,10 +3,15 @@ package javase02.task02;
 public class Chancellery {
     int price;
     int number;
+    boolean isUsesInk;
+    boolean isUsesGraphite;
 }
 
-class Pen extends Chancellery{
-
+abstract class Pen extends Chancellery{
+    Pen(){
+        isUsesInk=true;
+        isUsesGraphite=!isUsesInk;
+    }
 }
 
 class RedPen extends Pen{
@@ -27,8 +32,11 @@ class BluePen extends Pen {
     }
 }
 
-class Pencil extends Chancellery{
-
+abstract class Pencil extends Chancellery{
+    Pencil(){
+        isUsesGraphite=true;
+        isUsesInk=!isUsesGraphite;
+    }
 }
 
 class BlackPencil extends Pencil {
