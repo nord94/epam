@@ -8,41 +8,41 @@ public class Worker {
     Chancellery[] chancelleries;
     //Chancellery[] chancelleries = new Chancellery[numberOfChancellery];
     static Scanner input = new Scanner(System.in);
-    private int calculatePriceOfChancellery(Worker obj){
-        int summ=0;
-        for (int i =0;i<numberOfChancellery;i++) summ+=obj.chancelleries[i].price;
+
+    private int calculatePriceOfChancellery(Worker obj) {
+        int summ = 0;
+        for (int i = 0; i < numberOfChancellery; i++) summ += obj.chancelleries[i].price;
         return summ;
     }
 
-    Worker(String name1, int number){
-        name=name1;
-        numberOfChancellery=number;
+    Worker(String name1, int number) {
+        name = name1;
+        numberOfChancellery = number;
         chancelleries = new Chancellery[number];
     }
 
-    void collectChancellery(){
+    void collectChancellery() {
         Chancellery[] chancelleries1 = new Chancellery[5];
-        chancelleries1[0]=new BluePen();
-        chancelleries1[1]=new RedPen();
-        chancelleries1[2]=new GreenPen();
-        chancelleries1[3]=new BlackPencil();
-        chancelleries1[4]=new WhitePencil();
+        chancelleries1[0] = new BluePen();
+        chancelleries1[1] = new RedPen();
+        chancelleries1[2] = new GreenPen();
+        chancelleries1[3] = new BlackPencil();
+        chancelleries1[4] = new WhitePencil();
 
-        int overStep=0;
-        for (int i=0;i<numberOfChancellery;i++){
-            if (overStep==0){
+        int overStep = 0;
+        for (int i = 0; i < numberOfChancellery; i++) {
+            if (overStep == 0) {
                 System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
                         "4 - BlackPencil, 5 - WhitePencil");
                 int itemIndex = input.nextInt();
                 System.out.println("Now enter its quantity:");
                 chancelleries[i].number = input.nextInt();
-                for (int j =0;j<chancelleries[i].number;j++){
-                    chancelleries[i+j] = chancelleries1[itemIndex-1];
-                    overStep=j;
+                for (int j = 0; j < chancelleries[i].number; j++) {
+                    chancelleries[i + j] = chancelleries1[itemIndex - 1];
+                    overStep = j;
                 }
 
-            }
-            else {
+            } else {
                 overStep--;
                 continue;
             }
