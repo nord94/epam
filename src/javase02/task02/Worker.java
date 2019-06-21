@@ -4,13 +4,12 @@ import java.util.Scanner;
 
 public class Worker {
     String name;
-    int numberOfChancellery;
     Chancellery[] chancelleries;
     static Scanner input = new Scanner(System.in);
 
     private int calculatePriceOfChancellery(Worker obj) {
         int summ = 0;
-        for (int i = 0; i < numberOfChancellery; i++) summ += obj.chancelleries[i].price;
+        for (int i = 0; i < chancelleries.length; i++) summ += obj.chancelleries[i].price;
         return summ;
     }
 
@@ -33,11 +32,16 @@ public class Worker {
         all allPossibleChancellery.
         I used 'overStep'-variable to skip elements in Worker's chancellery that are  filled with similar object.
          */
-        for (int i = 0; i < numberOfChancellery; i++) {
+        for (int i = 0; i < chancelleries.length; i++) {
             if (overStep == 0) {
                 System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
                         "4 - BlackPencil, 5 - WhitePencil");
                 int itemIndex = input.nextInt();
+                while ((itemIndex<=0)|(itemIndex>5)){
+                    System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
+                            "4 - BlackPencil, 5 - WhitePencil");
+                    itemIndex = input.nextInt();
+                }
                 System.out.println("Now enter its quantity:");
                 chancelleries[i].number = input.nextInt();
                 for (int j = 0; j < chancelleries[i].number; j++) {
@@ -54,7 +58,9 @@ public class Worker {
 
     public static void main(String[] args) {
         System.out.println("Enter name -> press 'Enter' -> enter number of chancellery");
-        Worker worker = new Worker(input.nextLine(), input.nextInt());
+        String name = input.nextLine();
+        int numOfChancellery = input.nextInt();
+        Worker worker = new Worker(name, numOfChancellery);
         worker.collectChancellery();
     }
 }
