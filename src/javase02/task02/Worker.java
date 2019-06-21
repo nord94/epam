@@ -11,7 +11,7 @@ public class Worker {
     private void calculatePriceOfChancellery() {
         int summ = 0;
         for (int i = 0; i < chancelleries.length; i++) summ += chancelleries[i].price;
-        this.summ=summ;
+        this.summ = summ;
     }
 
     Worker(String name, int number) {
@@ -27,21 +27,17 @@ public class Worker {
         allPossibleChancellery[2] = new RedPen();
         allPossibleChancellery[3] = new BlackPencil();
         allPossibleChancellery[4] = new WhitePencil();
-        index=0;
-        /*
-        In this cycle i'm filling 'chancelleries' for Worker with elements from
-        all allPossibleChancellery.
-        I used 'overStep'-variable to skip elements in Worker's chancellery that are  filled with similar object.
-         */
+        index = 0;
+
         for (int i = 0; i < chancelleries.length; i++) {
             System.out.printf("Enter: 1 - BluePen(%d$), 2 - GreenPen (%d$), 3 - RedPen(%d$)" +
-                    ", 4 - BlackPencil(%d$), 5 - WhitePencil(%d$)", allPossibleChancellery[0].price,
+                            ", 4 - BlackPencil(%d$), 5 - WhitePencil(%d$)", allPossibleChancellery[0].price,
                     allPossibleChancellery[1].price, allPossibleChancellery[2].price, allPossibleChancellery[3].price,
                     allPossibleChancellery[4].price);
-            index= input.nextInt();
-            while ((index<=0)|(index>5)){
+            index = input.nextInt();
+            while ((index <= 0) | (index > 5)) {
                 System.out.println("0 < x < 6");
-                index= input.nextInt();
+                index = input.nextInt();
             }
             chancelleries[i] = allPossibleChancellery[index - 1];
         }
