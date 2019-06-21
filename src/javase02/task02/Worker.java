@@ -53,14 +53,15 @@ public class Worker {
         for (int k = 0; k < workers.length; k++){
             System.out.println("Enter number of chancellery -> press 'Enter' -> Enter name");
             int numOfChancellery;
+            String name = inputNames.nextLine();
             numOfChancellery = input.nextInt();
-            //String name = inputNames.nextLine();
-            String name = input.nextLine(); //If ill use this, java will throw InputMismatchException
+            /* If i'll use this, java will throw InputMismatchException
+            String name = input.nextLine();
+             */
             workers[k]= new Worker(name,numOfChancellery);
             workers[k].collectChancellery();
             System.out.println(workers[k].summ);
         }
-
 
     }
 }
