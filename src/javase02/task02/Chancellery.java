@@ -7,46 +7,46 @@ public class Chancellery {
     boolean isUsesGraphite;
 }
 
-abstract class Pen extends Chancellery{
-    Pen(){
-        isUsesInk=true;
-        isUsesGraphite=!isUsesInk;
+abstract class Pen extends Chancellery {
+    Pen() {
+        isUsesInk = true;
+        isUsesGraphite = !isUsesInk;
     }
 }
 
-class RedPen extends Pen{
-    RedPen(){
-        price=115;
+class RedPen extends Pen {
+    RedPen() {
+        price = 115;
     }
 }
 
-class GreenPen extends Pen{
-    GreenPen(){
-        price=110;
+class GreenPen extends Pen {
+    GreenPen() {
+        price = 110;
     }
 }
 
 class BluePen extends Pen {
-    BluePen(){
-        price=90;
+    BluePen() {
+        price = 90;
     }
 }
 
-abstract class Pencil extends Chancellery{
-    Pencil(){
-        isUsesGraphite=true;
-        isUsesInk=!isUsesGraphite;
+abstract class Pencil extends Chancellery {
+    Pencil() {
+        isUsesGraphite = true;
+        isUsesInk = !isUsesGraphite;
     }
 }
 
 class BlackPencil extends Pencil {
-    BlackPencil(){
-        price=50;
+    BlackPencil() {
+        price = 50;
     }
 }
 
-class WhitePencil extends Pencil{
-    WhitePencil(){
-        price=60;
+class WhitePencil extends Pencil {
+    WhitePencil() {
+        price = 60;
     }
 }
