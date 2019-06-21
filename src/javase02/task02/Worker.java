@@ -5,12 +5,14 @@ import java.util.Scanner;
 public class Worker {
     String name;
     Chancellery[] chancelleries;
+    int summ;
     static Scanner input = new Scanner(System.in);
+    static Scanner inputNames = new Scanner(System.in);
 
-    private int calculatePriceOfChancellery(Worker obj) {
+    private void calculatePriceOfChancellery() {
         int summ = 0;
-        for (int i = 0; i < chancelleries.length; i++) summ += obj.chancelleries[i].price;
-        return summ;
+        for (int i = 0; i < chancelleries.length; i++) summ += chancelleries[i].price;
+        this.summ = summ;
     }
 
     Worker(String name, int number) {
@@ -19,48 +21,47 @@ public class Worker {
     }
 
     void collectChancellery() {
+        int index;
         Chancellery[] allPossibleChancellery = new Chancellery[5];
         allPossibleChancellery[0] = new BluePen();
-        allPossibleChancellery[1] = new RedPen();
-        allPossibleChancellery[2] = new GreenPen();
+        allPossibleChancellery[1] = new GreenPen();
+        allPossibleChancellery[2] = new RedPen();
         allPossibleChancellery[3] = new BlackPencil();
         allPossibleChancellery[4] = new WhitePencil();
+        index = 0;
 
-        int overStep = 0;
-        /*
-        In this cycle i'm filling 'chancelleries' for Worker with elements from
-        all allPossibleChancellery.
-        I used 'overStep'-variable to skip elements in Worker's chancellery that are  filled with similar object.
-         */
         for (int i = 0; i < chancelleries.length; i++) {
-            if (overStep == 0) {
-                System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
-                        "4 - BlackPencil, 5 - WhitePencil");
-                int itemIndex = input.nextInt();
-                while ((itemIndex<=0)|(itemIndex>5)){
-                    System.out.println("Enter: 1 - BluePen, 2 - GreenPen, 3 - RedPen" +
-                            "4 - BlackPencil, 5 - WhitePencil");
-                    itemIndex = input.nextInt();
-                }
-                System.out.println("Now enter its quantity:");
-                chancelleries[i].number = input.nextInt();
-                for (int j = 0; j < chancelleries[i].number; j++) {
-                    chancelleries[i + j] = allPossibleChancellery[itemIndex - 1];
-                    overStep = j;
-                }
-
-            } else {
-                overStep--;
-                continue;
+            System.out.printf("Enter: 1 - BluePen(%d$), 2 - GreenPen (%d$), 3 - RedPen(%d$)" +
+                            ", 4 - BlackPencil(%d$), 5 - WhitePencil(%d$)", allPossibleChancellery[0].price,
+                    allPossibleChancellery[1].price, allPossibleChancellery[2].price, allPossibleChancellery[3].price,
+                    allPossibleChancellery[4].price);
+            index = input.nextInt();
+            while ((index <= 0) | (index > 5)) {
+                System.out.println("0 < x < 6");
+                index = input.nextInt();
             }
+            chancelleries[i] = allPossibleChancellery[index - 1];
         }
+        calculatePriceOfChancellery();
     }
 
     public static void main(String[] args) {
-        System.out.println("Enter name -> press 'Enter' -> enter number of chancellery");
-        String name = input.nextLine();
-        int numOfChancellery = input.nextInt();
-        Worker worker = new Worker(name, numOfChancellery);
-        worker.collectChancellery();
+        int numOfWorkers;
+        System.out.println("Enter number of workers");
+        numOfWorkers = input.nextInt();
+        Worker[] workers = new Worker[numOfWorkers];
+        for (int k = 0; k < workers.length; k++){
+            System.out.println("Enter number of chancellery -> press 'Enter' -> Enter name");
+            int numOfChancellery;
+            String name = inputNames.nextLine();
+            numOfChancellery = input.nextInt();
+            /* If i'll use this, java will throw InputMismatchException
+            String name = input.nextLine();
+             */
+            workers[k]= new Worker(name,numOfChancellery);
+            workers[k].collectChancellery();
+            System.out.println(workers[k].summ);
+        }
+
     }
 }
