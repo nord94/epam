@@ -26,7 +26,6 @@ abstract class Pen extends Chancellery {
 
 class BluePen extends Pen {
     BluePen() {
-        super();
         name = "bluepen";
         color = "blue";
         price = 50;
